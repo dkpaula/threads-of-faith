@@ -9,10 +9,8 @@ A Christian blog application built with the MERN stack (MongoDB, Express, React,
 4. [Setup Instructions](#setup-instructions)
 5. [Folder Structure](#folder-structure)
 6. [Code Explanation](#code-explanation)
-7. [Screenshots](#screenshots)
-8. [Challenges Faced](#challenges-faced)
-9. [Future Improvements](#future-improvements)
-10. [Development Photos](#development-photos)
+7. [Challenges Faced](#challenges-faced)
+8. [Future Improvements](#future-improvements)
 
 ## Project Overview
 Threads of Faith is a blog platform designed for sharing Christian content. It features user authentication, blog post creation and management, and a responsive design with a maroon/gold color palette reflecting the Christian theme.
@@ -187,32 +185,6 @@ The frontend uses React with functional components and hooks:
   - Loading states during API calls
   - UI toggles for modals, dropdowns, etc.
 
-## Screenshots
-
-### Homepage
-![Homepage](frontend/public/images/screenshots/homepage.png)
-*The welcoming homepage featuring the "Threads of Faith" banner and daily Bible verse*
-
-### Login Page
-![Login Page](frontend/public/images/screenshots/login.png)
-*Secure login page with maroon/gold theme*
-
-### Register Page
-![Register Page](frontend/public/images/screenshots/register.png)
-*User registration form with validation*
-
-### Blog Posts
-![Blog Posts](frontend/public/images/screenshots/blogposts.png)
-*List of blog posts with author information and timestamps*
-
-### Create Post
-![Create Post](frontend/public/images/screenshots/createpost.png)
-*Form for creating new blog posts*
-
-### Single Post View
-![Single Post](frontend/public/images/screenshots/singlepost.png)
-*Detailed view of a single blog post*
-
 ## Challenges Faced
 
 ### Port Conflicts
@@ -245,14 +217,3 @@ Implementing image uploads for blog posts initially resulted in storage and retr
 - Email notification system for new posts
 - Prayer request submission form
 - Community discussion forums
-
-## Development Photos
-
-![Development Session 1](frontend/public/images/dev-photos/coding-session-1.jpg)
-*Working on frontend components and styling*
-
-![Development Session 2](frontend/public/images/dev-photos/coding-session-2.jpg)
-*Debugging authentication issues*
-
-![Development Session 3](frontend/public/images/dev-photos/coding-session-3.jpg)
-*Final testing before deployment*
