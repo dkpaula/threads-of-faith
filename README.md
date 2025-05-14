@@ -1,397 +1,258 @@
-Threads of Faith - MERN Stack Blog
-Term Paper Documentation
-Author: Danna Paula Llagas
-Course: 2nd Year - BS Information Technology
+# Threads of Faith
 
-1. Project Overview
-Threads of Faith is a full-stack blog application built with the MERN stack that allows users to create, read, update, and delete blog posts, as well as interact with them through comments and likes.
-•	Main Features
-•	User authentication (register, login, logout)
-•	Create, edit, and delete blog posts
-•	Rich text editor with image upload
-•	Comment on posts with edit/delete functionality
-•	Like/unlike posts
-•	Mobile-responsive design
-•	Category and tag filtering
-•	User-friendly interface
+A Christian blog application built with the MERN stack (MongoDB, Express, React, Node.js).
 
-2. Technologies Used
-Backend
-•	MongoDB - NoSQL database
-•	Express.js - Web framework for Node.js
-•	Node.js - JavaScript runtime
-•	Mongoose - MongoDB object modeling
-•	JWT - JSON Web Tokens for authentication
-•	Multer - File upload middleware
-•	Bcrypt - Password hashing
-Frontend
-•	React - Frontend library
-•	React Router - Navigation
-•	React Bootstrap - UI components
-•	Axios - HTTP client
-•	React Quill - Rich text editor
-•	Bootstrap 5 - CSS framework
-•	JWT-decode - JWT token parsing
-•	DOMPurify - HTML sanitization
- 
-3. Setup Instructions
-Prerequisites
-•	Node.js (v14.0.0 or higher)
-•	npm (v6.0.0 or higher)
-•	MongoDB account (for database connection)
-•	Git
-Installation Steps
-Clone the Repository
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Setup Instructions](#setup-instructions)
+5. [Folder Structure](#folder-structure)
+6. [Code Explanation](#code-explanation)
+7. [Screenshots](#screenshots)
+8. [Challenges Faced](#challenges-faced)
+9. [Future Improvements](#future-improvements)
+10. [Development Photos](#development-photos)
+
+## Project Overview
+Threads of Faith is a blog platform designed for sharing Christian content. It features user authentication, blog post creation and management, and a responsive design with a maroon/gold color palette reflecting the Christian theme.
+
+## Features
+- User authentication (register, login, logout)
+- Create, read, update, and delete blog posts
+- Responsive design with Bootstrap
+- Protected routes for authenticated users
+- Custom styling with Christian-themed colors and fonts (Playfair Display and Lora)
+- Bible verse display on homepage
+
+## Technologies Used
+- **Frontend**: React, React Router, Bootstrap, CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: JSON Web Tokens (JWT)
+- **Other**: Axios, bcrypt, multer (for image uploads)
+
+## Setup Instructions
+
+```bash
+# 1. Clone the Repository
 git clone https://github.com/dkpaula/threads-of-faith.git
 cd threads-of-faith
-Install Backend Dependencies
+
+# 2. Install Backend Dependencies
 cd backend
 npm install
-Configure Backend Environment
-Create a .env file in the backend directory with the following variables:
 
-PORT=4000
-MONGO_URI=mongodb://127.0.0.1:27017/mern-blog
-JWT_SECRET=JWT_SECRET=Gq8Xz#1FpYjM9m$uYn3mKmQy&uP8ZzHv7fF$8G4vY%9s
-Install Frontend Dependencies
+# 3. Configure Backend Environment
+# Create a .env file in the backend directory with:
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/threadsoffaith
+JWT_SECRET=your_secure_jwt_secret_key
+PORT=4001
+
+# 4. Install Frontend Dependencies
 cd ../frontend
 npm install
-Start the Application
-•	Start the backend server:
+
+# 5. Start the Backend Server
 # In the backend directory
 npm start
-•	Start the frontend development server:
+
+# 6. Start the Frontend Development Server (in a new terminal)
 # In the frontend directory
 npm start
-Access the Application
-•	Backend API will be running at: http://localhost:4001
-•	Frontend will be accessible at: http://localhost:3000
-Troubleshooting
-•	If port 4001 is already in use, you can change it in the .env file
-•	Ensure MongoDB connection string is correct with proper credentials
+```
 
-4. Folder Structures
+## Folder Structure
 
-Backend
+### Backend
+```
 backend/
-├── config/               
-│   └── db.js             
-├── controllers/          
-│   ├── authController.js 
-│   └── postController.js 
-├── middleware/           
-│   └── authMiddleware.js 
-├── models/               
-│   ├── Post.js           
-│   └── User.js           
-├── routes/               
-│   ├── authRoutes.js     
-│   └── postRoutes.js    
-├── .env                  
-├── package.json          
-└── server.js             
- 
-Frontend
+├── config/               # Configuration files
+│   └── db.js             # MongoDB connection setup
+├── controllers/          # Request handlers
+│   ├── authController.js # Authentication logic
+│   └── postController.js # Blog post CRUD operations
+├── middleware/           # Custom middleware
+│   └── authMiddleware.js # JWT verification
+├── models/               # Mongoose schemas
+│   ├── Post.js           # Blog post model
+│   └── User.js           # User model
+├── routes/               # API routes
+│   ├── authRoutes.js     # Login/register endpoints
+│   └── postRoutes.js     # Blog post endpoints
+├── uploads/              # Uploaded images storage
+├── .env                  # Environment variables
+├── package.json          # Dependencies and scripts
+└── server.js             # Main application entry point
+```
+
+### Frontend
+```
 frontend/
-├── public/               
-│   ├── images/           
-│   └── index.html        
-├── src/                  
-│   ├── components/       
-│   │   ├── BlogPosts.js  
-│   │   ├── CreatePost.js 
-│   │   ├── EditPost.js   
-│   │   ├── HomePage.js   
-│   │   ├── Login.js      
-│   │   ├── Navbar.js     
-│   │   ├── Register.js   
-│   │   └── SinglePost.js 
-│   ├── App.css           
-│   ├── App.js            
-│   ├── index.js          
-│   └── UserContext.js    
-├── package.json          
-└── .env                  
+├── public/               # Static files
+│   ├── images/           # Image assets
+│   └── index.html        # HTML template
+├── src/                  # Source code
+│   ├── components/       # Reusable UI components
+│   │   ├── BlogPosts.js  # Blog listing component
+│   │   ├── CreatePost.js # Post creation form
+│   │   ├── EditPost.js   # Post editing form
+│   │   ├── HomePage.js   # Landing page
+│   │   ├── Login.js      # Login form
+│   │   ├── Navbar.js     # Navigation bar
+│   │   ├── Register.js   # Registration form
+│   │   └── SinglePost.js # Individual post view
+│   ├── services/         # API service functions
+│   ├── styles/           # Component-specific styles
+│   ├── App.css           # Global styles
+│   ├── App.js            # Main component with routes
+│   ├── index.js          # Application entry point
+│   └── UserContext.js    # Authentication context
+└── package.json          # Dependencies and scripts
+```
 
+## Code Explanation
 
+### Backend
 
-5. Code Explanation
-BACKEND
-API Routes
-•	Authentication Routes (authRoutes.js):
-o	POST /api/auth/register:
-Creates new user accounts. It checks for unique email addresses, hashes passwords using bcrypt, and returns a JWT token upon successful registration.
-o	POST /api/auth/login:
-Verifies user credentials by comparing hashed passwords and issues a JWT token for authenticated sessions.
-•	Blog Post Routes (postRoutes.js):
-o	GET /api/posts:
-Retrieves all blog posts with optional filtering and pagination. This route is protected using authentication middleware.
-o	POST /api/posts:
-Creates a new blog post, associating it with the currently authenticated user.
-o	GET /api/posts/:id:
-Fetches a specific blog post using its MongoDB ObjectId.
-o	PUT /api/posts/:id:
-Updates a blog post if the current user is its original author.
-o	DELETE /api/posts/:id:
-Deletes a blog post if the current user is authorized.
+#### API Routes
+The backend uses Express.js to define RESTful API endpoints:
 
-Database Models
-•	User Model (User.js):
-const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
+- **Authentication Routes**: Handle user registration and login
+  - `/api/auth/register`: Creates new user accounts with hashed passwords
+  - `/api/auth/login`: Validates credentials and issues JWT tokens
 
-o	Stores email and hashed password.
-o	Uses Mongoose pre-save middleware to hash the password before saving.
-o	Provides methods for comparing password hashes during login.
+- **Blog Post Routes**: Manage CRUD operations for blog posts
+  - GET `/api/posts`: Retrieves all posts with pagination
+  - POST `/api/posts`: Creates a new blog post
+  - GET `/api/posts/:id`: Fetches a specific post by ID
+  - PUT `/api/posts/:id`: Updates an existing post (restricted to author)
+  - DELETE `/api/posts/:id`: Removes a post (restricted to author)
 
-•	Post Model (Post.js):
-const PostSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now }
-});
-o	Stores blog post data.
-o	Links posts to users via the author field.
-o	Tracks when the post was created and last updated.
+#### Database Models
+MongoDB models using Mongoose ODM:
 
-Middleware
-•	Authentication Middleware (authMiddleware.js):
-const jwt = require('jsonwebtoken');
+- **User Model**: Stores user account information
+  - Email and password (hashed using bcrypt)
+  - Timestamps for account creation
+  - Methods for password comparison
 
-module.exports = (req, res, next) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '');
-  
-  if (!token) {
-    return res.status(401).json({ message: 'Authentication required' });
-  }
-  
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;
-    next();
-  } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
-  }
-};
-o	Extracts JWT from the Authorization header.
-o	Verifies its validity using a secret key.
-o	Attaches user ID to the request object for downstream access control.
-o	Blocks unauthorized requests.
- 
-FRONTEND
-React Components
-•	App.js:
-function App() {
-  const { user } = useContext(UserContext);
-  return (
-    <Router>
-      <Navbar />
-      <Container>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={!user ? <Login /> : <Navigate to="/blogposts" />} />
-          <Route path="/register" element={!user ? <Register /> : <Navigate to="/blogposts" />} />
-          <Route path="/blogposts" element={user ? <BlogPosts /> : <Navigate to="/login" />} />
-          <Route path="/createpost" element={user ? <CreatePost /> : <Navigate to="/login" />} />
-          <Route path="/post/:id" element={user ? <SinglePost /> : <Navigate to="/login" />} />
-          <Route path="/edit/:id" element={user ? <EditPost /> : <Navigate to="/login" />} />
-        </Routes>
-      </Container>
-      <Footer />
-    </Router>
-  );
-}
-o	Defines routes using React Router.
-o	Protects specific routes based on login state using <Navigate />.
+- **Post Model**: Represents blog content
+  - Title, content fields for blog text
+  - Reference to author (User model)
+  - Timestamps for creation and updates
+  - Optional image URL field for featured images
 
-•	BlogPosts.js:
-function BlogPosts() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:4001/api/posts', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        const data = await response.json();
-        setPosts(data);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    fetchPosts();
-  }, []);
-  
-  return (
-    <div className="blog-posts">
-      {loading ? <Spinner /> : (
-        posts.map(post => (
-          <PostCard key={post._id} post={post} />
-        ))
-      )}
-    </div>
-  );
-}
-o	Fetches all blog posts from the backend.
-o	Uses a loading spinner until data is ready.
-o	Maps post data into PostCard components.
+#### Authentication Middleware
+Protects routes requiring login:
+  - Extracts JWT token from request headers
+  - Verifies token validity and decodes user information
+  - Attaches user ID to request object for downstream handlers
+  - Rejects unauthorized requests with 401 status
 
-•	CreatePost.js:
-function CreatePost() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4001/api/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ title, content })
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to create post');
-      }
-      
-      navigate('/blogposts');
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-  
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <Form.Control 
-          type="text" 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
-          required 
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Content</Form.Label>
-        <Form.Control 
-          as="textarea" 
-          rows={10} 
-          value={content} 
-          onChange={(e) => setContent(e.target.value)} 
-          required 
-        />
-      </Form.Group>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <Button variant="primary" type="submit">Create Post</Button>
-    </Form>
-  );
-}
-o	Renders a form to create a new blog post.
-o	Uses form validation and error handling.
-o	Makes an authenticated API call to submit the post.
+### Frontend
 
+#### React Components
+The frontend uses React with functional components and hooks:
 
-State Management
-•	UserContext.js:
-export const UserContext = createContext();
+- **App.js**: Central component managing routing
+  - Uses React Router for navigation
+  - Implements protected routes based on authentication state
+  - Renders global layout elements like Navbar and Footer
 
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  
-  const login = async (credentials) => {
-    const response = await fetch('http://localhost:4001/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
-    });
-    
-    const data = await response.json();
-    
-    if (response.ok) {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('userEmail', data.email);
-      setUser({ email: data.email });
-      return true;
-    }
-    return false;
-  };
-  
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userEmail');
-    setUser(null);
-  };
-  
-  useEffect(() => {
-    const userEmail = localStorage.getItem('userEmail');
-    if (userEmail) {
-      setUser({ email: userEmail });
-    }
-  }, []);
-  
-  return (
-    <UserContext.Provider value={{ user, login, logout }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-o	Provides app-wide authentication state.
-o	Stores and retrieves login data using localStorage.
-o	Supplies login and logout functions for child components.
- 
+- **HomePage**: Landing page with featured content
+  - Displays welcome message with Bible verse
+  - Shows featured blog posts
+  - Includes custom banner with Threads of Faith branding
 
-6. Challenges Faced
-1.	Port Conflicts
-Multiple server instances occasionally attempted to run on the same port, resulting in connection errors and application crashes.
-Solution: Implemented proper environment variable configuration and created a utility script (kill-server.sh) to detect and terminate processes using commonly occupied ports (e.g., 3000, 4000).
-2.	Mobile API Connection
-Mobile devices on different networks experienced connectivity issues due to hardcoded API URLs.
-Solution: Added dynamic API URL detection that identifies whether the client is accessing from the same machine or a different device, enabling seamless external connectivity.
-3.	Comment Deletion
-The initial implementation used outdated MongoDB methods for removing comment subdocuments.
-Solution: Updated the logic to use the current pull() method in Mongoose, ensuring compatibility and proper subdocument management.
-4.	React Hook Dependencies
-ESLint flagged missing dependencies in useEffect hooks, which could lead to subtle and hard-to-diagnose bugs.
-Solution: Refactored the components to correctly use useCallback and included all necessary dependencies in each hook.
+- **BlogPosts**: Main content listing
+  - Fetches posts from API on component mount
+  - Renders list of posts with title, excerpt, and author
+  - Implements pagination for large post collections
 
-7. Future Improvements
-•	User Profiles
-Implement customizable profiles with avatars, display names, and biographical information.
-•	Notifications
-Add a notification system for interactions such as comments, likes, and replies.
-•	Advanced Search
-Develop filtering and sorting options based on tags, relevance, date, and popularity.
-•	Dark Mode
-Provide theme-switching functionality with support for dark mode.
-•	Threaded Comments
-Enable nested replies to improve comment structure and conversation flow.
-•	Social Sharing
-Integrate social media sharing options for platforms like Facebook, Twitter, and LinkedIn.
-•	Bookmark Feature
-Allow users to save posts to a personal reading list for future reference.
-•	Content Drafts
-Support creating drafts and scheduling posts for future publication.
-•	Admin Dashboard
-Build a dedicated administrative panel for content moderation, user management, and analytics. 
+- **Authentication Components**:
+  - Login and Register forms with validation
+  - Styled consistently with site's maroon/gold theme
+  - Error handling for authentication failures
 
-8. Screenshots
-10. Development Photos
- 
+#### State Management
+- **UserContext**: Global authentication state
+  - Manages current user information across components
+  - Provides login/logout functions to components
+  - Persists authentication state across page refreshes using localStorage
+  - Includes JWT token management for API requests
+
+- **Component-level State**: Local state for UI interactions
+  - Form inputs and validation
+  - Loading states during API calls
+  - UI toggles for modals, dropdowns, etc.
+
+## Screenshots
+
+### Homepage
+![Homepage](frontend/public/images/screenshots/homepage.png)
+*The welcoming homepage featuring the "Threads of Faith" banner and daily Bible verse*
+
+### Login Page
+![Login Page](frontend/public/images/screenshots/login.png)
+*Secure login page with maroon/gold theme*
+
+### Register Page
+![Register Page](frontend/public/images/screenshots/register.png)
+*User registration form with validation*
+
+### Blog Posts
+![Blog Posts](frontend/public/images/screenshots/blogposts.png)
+*List of blog posts with author information and timestamps*
+
+### Create Post
+![Create Post](frontend/public/images/screenshots/createpost.png)
+*Form for creating new blog posts*
+
+### Single Post View
+![Single Post](frontend/public/images/screenshots/singlepost.png)
+*Detailed view of a single blog post*
+
+## Challenges Faced
+
+### Port Conflicts
+One of the significant challenges we encountered was port conflict issues when running the backend server. Sometimes the port 4001 would remain occupied even after stopping the application, causing the server to fail on restart.
+
+**Solution**: We implemented a utility script to identify and kill processes using the required port. This ensured that we could reliably restart the server during development.
+
+### Authentication State Management
+Initially, we faced issues with authentication state not being consistent across the application. Users would appear logged in on some pages but not others, especially after page refreshes.
+
+**Solution**: We centralized authentication management using React Context API in our UserContext component. This provided a global state that persisted across routes and page refreshes by leveraging localStorage.
+
+### UI Design Customization
+Adapting the standard Bootstrap components to match our Christian-themed color palette proved challenging. The default Bootstrap components didn't align with our vision for the site's aesthetic.
+
+**Solution**: We created custom CSS overrides in component-specific style files and incorporated web fonts (Playfair Display and Lora) to achieve the desired look and feel that resonated with the Christian theme.
+
+### Image Handling
+Implementing image uploads for blog posts initially resulted in storage and retrieval issues, with images not displaying correctly after being uploaded.
+
+**Solution**: We configured Multer middleware to handle multipart form data and set up a dedicated uploads directory with proper path resolution to ensure images were stored and served correctly.
+
+## Future Improvements
+- Comment functionality for blog posts
+- User profiles with avatars
+- Categories and tags for blog posts
+- Search functionality
+- Social media sharing
+- Enhanced rich text editor for post creation
+- Email notification system for new posts
+- Prayer request submission form
+- Community discussion forums
+
+## Development Photos
+
+![Development Session 1](frontend/public/images/dev-photos/coding-session-1.jpg)
+*Working on frontend components and styling*
+
+![Development Session 2](frontend/public/images/dev-photos/coding-session-2.jpg)
+*Debugging authentication issues*
+
+![Development Session 3](frontend/public/images/dev-photos/coding-session-3.jpg)
+*Final testing before deployment*
