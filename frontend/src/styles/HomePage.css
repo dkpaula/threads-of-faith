@@ -1,0 +1,287 @@
+/* HomePage.css - Extends BlogPosts styling */
+
+.hero-section {
+  background: var(--red-gradient);
+  color: white;
+  padding: 3rem 0 4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(139, 38, 53, 0.25);
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: pulse 8s ease-in-out infinite alternate;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: pulse 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hero-section .header-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero-section .lead {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.hero-section .btn-primary {
+  background: var(--gold-gradient);
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.hero-section .btn-sign-in {
+  background: white;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.hero-section .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+}
+
+.hero-section .btn-sign-in:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  color: var(--primary-color);
+}
+
+.feature-icon {
+  display: inline-flex;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(252, 250, 250, 0.95), rgba(255, 255, 255, 0.95));
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(139, 38, 53, 0.15);
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.feature-icon::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.post-card:hover .feature-icon {
+  transform: scale(1.1) translateY(-5px);
+}
+
+.post-card:hover .feature-icon::before {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Feature Card Staggered Animations */
+.post-card {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.post-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.post-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.post-card:nth-child(3) {
+  animation-delay: 0.7s;
+}
+
+/* About Section Animations */
+.sidebar-card {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.8s forwards;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 0;
+  }
+  
+  .hero-section .header-title {
+    font-size: 2rem;
+  }
+  
+  .hero-section .lead {
+    font-size: 1rem;
+  }
+}
+
+/* Bible Verse Signature */
+.bible-verse-signature {
+  background: var(--red-gradient);
+  color: white;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
+.bible-verse-signature::before {
+  content: '"';
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  opacity: 0.1;
+  color: var(--accent-color);
+}
+
+.verse-text {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.verse-reference {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  opacity: 0.9;
+  align-self: flex-end;
+  margin-right: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 992px) {
+  .bible-verse-signature {
+    padding: 2rem 1rem;
+  }
+  
+  .verse-text {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .bible-verse-signature {
+    padding: 1.5rem 1rem;
+  }
+  
+  .verse-text {
+    font-size: 1.1rem;
+  }
+  
+  .verse-reference {
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
+} 
